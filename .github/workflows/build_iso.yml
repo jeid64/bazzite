@@ -38,7 +38,7 @@ jobs:
           mkdir /tmp/hello
           sudo apt-get update
           sudo apt-get install -y rclone
-          rclone copy $SOURCE_DIR aws:bazzite
+          rclone copy $SOURCE_DIR aws:bazzite-jeid
 
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@v1.3.1
@@ -171,4 +171,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y rclone
-          rclone copy $SOURCE_DIR aws:bazzite
+          rclone copy $SOURCE_DIR aws:bazzite-jeid
