@@ -9,7 +9,7 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION:-40}"
 
 FROM ghcr.io/ublue-os/akmods:${KERNEL_FLAVOR}-${FEDORA_MAJOR_VERSION} AS akmods
 FROM ghcr.io/ublue-os/akmods-extra:${KERNEL_FLAVOR}-${FEDORA_MAJOR_VERSION} AS akmods-extra
-FROM ghcr.io/ublue-os/fsync:latest AS fsync
+FROM ghcr.io/jeid64/jeid-bazzite-kernel:latest AS fsync
 
 FROM ${BASE_IMAGE}:${FEDORA_MAJOR_VERSION} AS bazzite
 
@@ -154,10 +154,10 @@ RUN curl -Lo /usr/bin/copr https://raw.githubusercontent.com/ublue-os/COPR-comma
     ostree container commit
 
 # Install kernel-fsync
-COPY --from=fsync /tmp/rpms /tmp/fsync-rpms
+COPY --from=fsync /tmp/rpms/x86_64 /tmp/fsync-rpms
 RUN rpm-ostree cliwrap install-to-root / && \
     if [[ "${KERNEL_FLAVOR}" =~ "fsync" ]]; then \
-        echo "Will install ${KERNEL_FLAVOR} kernel" && \
+        echo "Will install ${KERNEL_FLAVOR} kernel ITS FSYNC" && \
         rpm-ostree override replace \
         --experimental \
             /tmp/fsync-rpms/kernel-6*.rpm \
