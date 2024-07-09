@@ -154,7 +154,7 @@ RUN curl -Lo /usr/bin/copr https://raw.githubusercontent.com/ublue-os/COPR-comma
     ostree container commit
 
 # Install kernel-fsync
-COPY --from=fsync /tmp/rpms/x86_64 /tmp/fsync-rpms
+COPY --from=fsync /tmp/rpms /tmp/fsync-rpms
 RUN rpm-ostree cliwrap install-to-root / && \
     if [[ "${KERNEL_FLAVOR}" =~ "fsync" ]]; then \
         echo "Will install ${KERNEL_FLAVOR} kernel ITS FSYNC" && \
