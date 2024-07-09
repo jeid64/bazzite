@@ -596,7 +596,6 @@ RUN rm -f /etc/profile.d/toolbox.sh && \
     systemctl enable brew-upgrade.timer && \
     systemctl enable brew-update.timer && \
     systemctl enable btrfs-dedup@var-home.timer && \
-    systemctl enable displaylink.service && \
     systemctl enable input-remapper.service && \
     systemctl unmask bazzite-flatpak-manager.service && \
     systemctl enable bazzite-flatpak-manager.service && \
