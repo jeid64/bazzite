@@ -404,12 +404,12 @@ RUN rpm-ostree install \
         latencyflex-vulkan-layer \
         vkBasalt.x86_64 \
         vkBasalt.i686 \
-        obs-vkcapture.x86_64 \
-        libobs_vkcapture.x86_64 \
-        libobs_glcapture.x86_64 \
-        obs-vkcapture.i686 \
-        libobs_vkcapture.i686 \
-        libobs_glcapture.i686 \
+        # obs-vkcapture.x86_64 \
+        # libobs_vkcapture.x86_64 \
+        # libobs_glcapture.x86_64 \
+        # obs-vkcapture.i686 \
+        # libobs_vkcapture.i686 \
+        # libobs_glcapture.i686 \
         mangohud.x86_64 \
         mangohud.i686 && \
     ln -s wine32 /usr/bin/wine && \
@@ -793,13 +793,13 @@ RUN rpm-ostree override remove \
     ; fi && \
     ostree container commit
 
-# Install NVIDIA driver
-COPY --from=nvidia-akmods /rpms /tmp/akmods-rpms
-RUN curl -Lo /tmp/nvidia-install.sh https://raw.githubusercontent.com/ublue-os/hwe/main/nvidia-install.sh && \
-    chmod +x /tmp/nvidia-install.sh && \
-    IMAGE_NAME="${BASE_IMAGE_NAME}" /tmp/nvidia-install.sh && \
-    rm -f /usr/share/vulkan/icd.d/nouveau_icd.*.json && \
-    ostree container commit
+## Install NVIDIA driver
+#COPY --from=nvidia-akmods /rpms /tmp/akmods-rpms
+#RUN curl -Lo /tmp/nvidia-install.sh https://raw.githubusercontent.com/ublue-os/hwe/main/nvidia-install.sh && \
+#    chmod +x /tmp/nvidia-install.sh && \
+#    IMAGE_NAME="${BASE_IMAGE_NAME}" /tmp/nvidia-install.sh && \
+#    rm -f /usr/share/vulkan/icd.d/nouveau_icd.*.json && \
+#    ostree container commit
 
 # Cleanup & Finalize
 RUN echo "import \"/usr/share/ublue-os/just/95-bazzite-nvidia.just\"" >> /usr/share/ublue-os/justfile && \
