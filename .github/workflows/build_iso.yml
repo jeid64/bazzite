@@ -90,7 +90,7 @@ jobs:
         shell: bash
         run: |
           set -ex
-          image="ghcr.io/ublue-os/${{ matrix.image_name }}:${{ steps.generate-tag.outputs.tag }}"
+          image="ghcr.io/jeid64/${{ matrix.image_name }}:${{ steps.generate-tag.outputs.tag }}"
           # Make temp space
           TEMP_FLATPAK_INSTALL_DIR=$(mktemp -d -p ${{ github.workspace }} flatpak.XXX)
           # Get list of refs from directory
@@ -122,7 +122,7 @@ jobs:
         with:
           arch: x86_64
           image_name: ${{ matrix.image_name }}
-          image_repo: ghcr.io/ublue-os
+          image_repo: ghcr.io/jeid64
           variant: 'Kinoite'
           version: ${{ matrix.major_version }}
           image_tag: ${{ steps.generate-tag.outputs.tag }}
