@@ -20,7 +20,7 @@ jobs:
       matrix:
         image_name:
           - bazzite
-          - bazzite-gnome
+          - bazzite-deck
         major_version: [40]
     steps:
 
