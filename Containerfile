@@ -164,6 +164,7 @@ RUN rpm-ostree cliwrap install-to-root / && \
             /tmp/fsync-rpms/kernel-core-*.rpm \
             /tmp/fsync-rpms/kernel-modules-*.rpm \
             /tmp/fsync-rpms/kernel-uki-virt-*.rpm \
+            /tmp/fsync-rpms/kernel-debuginfo-common-*.rpm \
             /tmp/fsync-rpms/bpftool*.rpm \
     ; else \
         echo "will use kernel from ${KERNEL_FLAVOR} images" \
